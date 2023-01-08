@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DataStoreAndRetrofitRecyclerView</string>
+    <string name="str_bookmark_name">bookmark</string>
+    <string name="str_saved_items">Saved Items</string>
+</resources>
