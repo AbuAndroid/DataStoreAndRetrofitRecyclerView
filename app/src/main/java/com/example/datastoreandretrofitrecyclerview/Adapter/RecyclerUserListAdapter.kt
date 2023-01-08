@@ -31,7 +31,7 @@ class RecyclerUserListAdapter(
     init {
         userFilterList = userList
     }
-//gjhghjgkhgjkhgj
+//gjhghjgkhgjkhgj hjhjjkl
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclercustomlayout,parent,false)
