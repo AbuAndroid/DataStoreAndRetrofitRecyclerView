@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">DataStoreAndRetrofitRecyclerView</string>
+    <string name="app_name">Post Details</string>
+    <string name="app_second_activity_name">Saved Posts</string>
     <string name="str_bookmark_name">bookmark</string>
     <string name="str_saved_items">Saved Items</string>
+    <string name="str_default_id">1</string>
+    <string name="str_default_title">sunt aut facere repellat provident occaecati excepturi optio reprehenderit</string>
+    <string name="str_default_body">quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto</string>
 </resources>

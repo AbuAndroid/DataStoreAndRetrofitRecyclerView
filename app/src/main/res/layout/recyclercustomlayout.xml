@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -18,7 +18,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/uiitems"
+            android:id="@+id/uiItems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp">
@@ -30,7 +30,7 @@
                 android:layout_margin="20dp"
                 android:padding="5dp"
                 android:textSize="13sp"
-                android:text="1"
+                android:text="@string/str_default_id"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.013"
                 app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
                 android:layout_margin="10dp"
                 android:maxLines="3"
                 android:padding="10dp"
-                android:text="sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+                android:text="@string/str_default_title"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/uiTvId"
@@ -57,18 +57,18 @@
                 android:layout_margin="10dp"
                 android:maxLines="3"
                 android:padding="10dp"
-                android:text="quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+                android:text="@string/str_default_body"
                 android:textSize="14sp"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="@+id/uiTvTitle"
                 app:layout_constraintStart_toStartOf="@+id/uiTvTitle"
                 app:layout_constraintTop_toBottomOf="@+id/uiTvTitle" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/uiIbtnSaveitems"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/uiBtSaveitems"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:contentDescription="@string/app_name"
                 android:minHeight="48dp"
                 app:layout_constraintBottom_toBottomOf="@+id/uiTvId"

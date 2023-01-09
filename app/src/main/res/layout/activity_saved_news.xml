@@ -22,10 +22,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/uiRvSaveItems"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="15dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="@+id/uiTvTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/uiTvTitle"
         app:layout_constraintTop_toBottomOf="@+id/uiTvTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

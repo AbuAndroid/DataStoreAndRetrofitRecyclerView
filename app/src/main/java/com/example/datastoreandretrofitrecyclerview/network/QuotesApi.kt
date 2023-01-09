@@ -1,7 +1,6 @@
-package com.example.datastoreandretrofitrecyclerview.Network
+package com.example.datastoreandretrofitrecyclerview.network
 
-import com.example.datastoreandretrofitrecyclerview.Model.UserModelItem
-import retrofit2.Call
+import com.example.datastoreandretrofitrecyclerview.model.UserModelItem
 import retrofit2.Response
 import retrofit2.http.GET
 

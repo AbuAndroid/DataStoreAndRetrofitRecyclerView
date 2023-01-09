@@ -1,4 +1,4 @@
-package com.example.datastoreandretrofitrecyclerview.Network
+package com.example.datastoreandretrofitrecyclerview.network
 
 import com.example.datastoreandretrofitrecyclerview.Constants
 import retrofit2.Retrofit
