@@ -12,10 +12,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DataStoreAndRetrofitRecyclerView"
-        tools:targetApi="31">
+        android:theme="@style/Theme.DataStoreAndRetrofitRecyclerView">
         <activity
             android:name=".ui.SavedNewsActivity"
+            android:parentActivityName=".ui.NewsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -34,25 +34,8 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".BookmarkItems"
-            android:exported="false"
-            android:label="@string/app_second_activity_name"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name">
 
 
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
     </application>
 
 </manifest>

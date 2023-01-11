@@ -1,9 +1,6 @@
-@file:Suppress("DEPRECATION")
-
 package com.example.datastoreandretrofitrecyclerview.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,9 +14,9 @@ import java.util.*
 
 
 class UserAdapter(
-    private val userList: ArrayList<UserModelItem?>,
-    private val onItemClick: (UserModelItem?) -> Unit
-    ) : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
+    private val userList: ArrayList<UserModelItem>?,
+    private val onItemClick: (UserModelItem?) -> Unit,
+) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -29,7 +26,7 @@ class UserAdapter(
 
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val itemsList = userList[position]
+        val itemsList = userList?.get(position)
         if ((itemsList?.id?.rem(2) ?: 0) == 0) {
             holder.uiCardItems.setCardBackgroundColor(R.color.blue)
         } else {
@@ -38,23 +35,27 @@ class UserAdapter(
         holder.uiTvUserId.text = itemsList?.id.toString()
         holder.uiTvUserTitle.text = itemsList?.title
         holder.uiTvUserDescription.text = itemsList?.body
-        if (itemsList?.isSaved == true){
+        if (itemsList?.isSaved == true) {
             holder.uiBtToSaveItems.setImageResource(R.drawable.ic_baseline_bookmark)
+        } else {
+            holder.uiBtToSaveItems.setImageResource(R.drawable.ic_baseline_bookmark_border)
         }
     }
 
     override fun getItemCount(): Int {
-        return userList.size
+        return userList?.size?:0
     }
 
+
+    //updating recyclerview when data list changed
     @SuppressLint("NotifyDataSetChanged")
-    fun onNewsListChanged(postList: List<UserModelItem?>) {
-        this.userList.clear()
-        Log.d("sorted", "onNewsListChanged: ${postList}")
-        this.userList.addAll(postList)
+    fun onNewsListChanged(postList:List<UserModelItem>?) {
+        this.userList?.clear()
+        postList?.let { this.userList?.addAll(it) }
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val uiTvUserId = view.findViewById<TextView>(R.id.uiTvId)!!
         val uiTvUserTitle = view.findViewById<TextView>(R.id.uiTvTitle)!!
@@ -64,8 +65,8 @@ class UserAdapter(
 
         init {
             uiBtToSaveItems.setOnClickListener {
-                onItemClick(userList[adapterPosition])
-                //uiBtToSaveItems.setImageResource(R.drawable.ic_baseline_bookmark)
+                onItemClick(userList?.get(adapterPosition))
+                notifyDataSetChanged()
             }
         }
     }

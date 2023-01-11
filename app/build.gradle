@@ -50,6 +50,7 @@ dependencies {
     // for adding recyclerview
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     // for adding cardview
     implementation 'androidx.cardview:cardview:1.0.0'
 
@@ -79,5 +80,9 @@ dependencies {
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha03"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha03"
+
+
+
+
 }
 
