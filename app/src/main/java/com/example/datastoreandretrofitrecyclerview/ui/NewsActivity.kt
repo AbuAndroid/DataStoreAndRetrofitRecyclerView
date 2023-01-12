@@ -17,6 +17,7 @@ import com.example.datastoreandretrofitrecyclerview.adapter.UserAdapter
 import com.example.datastoreandretrofitrecyclerview.databinding.ActivityNewsBinding
 import com.example.datastoreandretrofitrecyclerview.manager.DataStoreManager
 import com.example.datastoreandretrofitrecyclerview.manager.PreferenceManger
+import com.example.datastoreandretrofitrecyclerview.manager.dataStore
 import com.example.datastoreandretrofitrecyclerview.model.UserModelItem
 import com.example.datastoreandretrofitrecyclerview.network.RetrofitHelper
 import kotlinx.coroutines.Dispatchers
@@ -107,14 +108,15 @@ class NewsActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun onSaveItemOrRemove(userModel: UserModelItem?) {
         if(userModel?.isSaved==false){
            userModel.isSaved=true
             //Toast.makeText(this,"button clicking",Toast.LENGTH_SHORT).show()
             //preferenceManger.saveUserInfo(userModel)
-                lifecycleScope.launch(Dispatchers.Main){
+                lifecycleScope.launch{
 
-                    dataStoreManager.saveUserItem(userModel)
+                    dataStoreManager.saveuserItem(userModel)
                     //Toast.makeText(this@NewsActivity,"bbkjsfd",Toast.LENGTH_SHORT).show()
                 }
                 //DataStoreManager.saveUserItem(userModel)
