@@ -15,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.datastoreandretrofitrecyclerview.R
 import com.example.datastoreandretrofitrecyclerview.adapter.UserAdapter
 import com.example.datastoreandretrofitrecyclerview.databinding.ActivityNewsBinding
+import com.example.datastoreandretrofitrecyclerview.manager.DataStoreManager
 import com.example.datastoreandretrofitrecyclerview.manager.PreferenceManger
 import com.example.datastoreandretrofitrecyclerview.model.UserModelItem
 import com.example.datastoreandretrofitrecyclerview.network.RetrofitHelper
@@ -33,6 +34,7 @@ class NewsActivity : AppCompatActivity() {
     //lazy iitializing preferenceManager
     private val preferenceManger by lazy { PreferenceManger(this) }
 
+    private val dataStoreManager by lazy { DataStoreManager(this) }
     private var users : MutableList<UserModelItem> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +46,7 @@ class NewsActivity : AppCompatActivity() {
         //set all listener funtions
         setUpListeners()
         //getting all data from server
+        getUserData()
     }
     //settingUi
     private fun setUpui() {
@@ -107,7 +110,16 @@ class NewsActivity : AppCompatActivity() {
     private fun onSaveItemOrRemove(userModel: UserModelItem?) {
         if(userModel?.isSaved==false){
            userModel.isSaved=true
-            preferenceManger.saveUserInfo(userModel)
+            //Toast.makeText(this,"button clicking",Toast.LENGTH_SHORT).show()
+            //preferenceManger.saveUserInfo(userModel)
+                lifecycleScope.launch(Dispatchers.Main){
+
+                    dataStoreManager.saveUserItem(userModel)
+                    //Toast.makeText(this@NewsActivity,"bbkjsfd",Toast.LENGTH_SHORT).show()
+                }
+                //DataStoreManager.saveUserItem(userModel)
+                Log.e("savefunctionCall","save funcion calling..")
+
         }
         else{
             val builder = AlertDialog.Builder(this)
@@ -116,7 +128,12 @@ class NewsActivity : AppCompatActivity() {
             builder.setIcon(R.drawable.ic_baseline_bookmark_remove)
             builder.setPositiveButton("OK"){dialog,which ->
                 userModel?.isSaved=false
-                preferenceManger.removeUserFromList(userModel)
+                //preferenceManger.removeUserFromList(userModel)
+                lifecycleScope.launch {
+                    dataStoreManager.removeUserItem(userModel)
+                    Toast.makeText(this@NewsActivity,"bbkjsfd",Toast.LENGTH_SHORT).show()
+                }
+
             }
             builder.setNegativeButton("CANCEL"){dialog,which ->
                 Toast.makeText(this,"user don't need to delete..",Toast.LENGTH_SHORT).show()
@@ -136,10 +153,5 @@ class NewsActivity : AppCompatActivity() {
             startActivity(Intent(this, SavedNewsActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        getUserData()
     }
 }

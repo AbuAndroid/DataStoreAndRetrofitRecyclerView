@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.datastoreandretrofitrecyclerview.R
 import com.example.datastoreandretrofitrecyclerview.model.UserModelItem
 import java.util.*
+import kotlin.reflect.KSuspendFunction1
 
 
 class UserAdapter(
     private val userList: ArrayList<UserModelItem>?,
-    private val onItemClick: (UserModelItem?) -> Unit,
+    private val onItemClick: (UserModelItem?) -> Unit
 ) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -40,6 +41,11 @@ class UserAdapter(
         } else {
             holder.uiBtToSaveItems.setImageResource(R.drawable.ic_baseline_bookmark_border)
         }
+
+        holder.uiBtToSaveItems.setOnClickListener {
+            onItemClick(userList?.get(position))
+            notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -63,11 +69,5 @@ class UserAdapter(
         val uiBtToSaveItems = view.findViewById<ImageView>(R.id.uiBtSaveitems)!!
         val uiCardItems = view.findViewById<CardView>(R.id.uiCardItems)!!
 
-        init {
-            uiBtToSaveItems.setOnClickListener {
-                onItemClick(userList?.get(adapterPosition))
-                notifyDataSetChanged()
-            }
-        }
     }
 }
