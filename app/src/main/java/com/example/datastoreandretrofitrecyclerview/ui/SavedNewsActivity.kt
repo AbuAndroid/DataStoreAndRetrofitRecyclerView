@@ -38,11 +38,19 @@ class SavedNewsActivity : AppCompatActivity() {
     }
 
     private fun getUserData() {
+        val drillerCatList: ArrayList<UserModelItem> = ArrayList()
+
         lifecycleScope.launch {
             dataStoreManager.userFlow.collect{
-                Log.e("saveistflow",it.toString())
+                it.forEach{colleted->
+                    drillerCatList.add(colleted)
+                }
             }
         }
+        Log.d("drill",drillerCatList.toString())
+        userAdapter.onNewsListChanged(drillerCatList)
+
+
             //Log.d("lst",list.toString())
             //userAdapter.onNewsListChanged(list)
 
