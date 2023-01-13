@@ -111,15 +111,11 @@ class NewsActivity : AppCompatActivity() {
     @SuppressLint("SuspiciousIndentation")
     private fun onSaveItemOrRemove(userModel: UserModelItem?) {
         if(userModel?.isSaved==false){
-           userModel.isSaved=true
-            //Toast.makeText(this,"button clicking",Toast.LENGTH_SHORT).show()
-            //preferenceManger.saveUserInfo(userModel)
-                lifecycleScope.launch{
 
+                lifecycleScope.launch{
+                    userModel.isSaved=true
                     dataStoreManager.saveuserItem(userModel)
-                    //Toast.makeText(this@NewsActivity,"bbkjsfd",Toast.LENGTH_SHORT).show()
                 }
-                //DataStoreManager.saveUserItem(userModel)
                 Log.e("savefunctionCall","save funcion calling..")
 
         }
@@ -129,11 +125,12 @@ class NewsActivity : AppCompatActivity() {
             builder.setMessage("Do you want to delete this item.")
             builder.setIcon(R.drawable.ic_baseline_bookmark_remove)
             builder.setPositiveButton("OK"){dialog,which ->
-                userModel?.isSaved=false
-                //preferenceManger.removeUserFromList(userModel)
+
                 lifecycleScope.launch {
-                    dataStoreManager.removeUserItem(userModel)
-                    Toast.makeText(this@NewsActivity,"bbkjsfd",Toast.LENGTH_SHORT).show()
+                    userModel?.isSaved=false
+                    if (userModel != null) {
+                        dataStoreManager.removeUserItem(userModel)
+                    }
                 }
 
             }

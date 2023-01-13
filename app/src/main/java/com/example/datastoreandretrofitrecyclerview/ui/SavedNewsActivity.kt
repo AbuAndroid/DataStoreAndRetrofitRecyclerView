@@ -1,14 +1,20 @@
 package com.example.datastoreandretrofitrecyclerview.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
 import com.example.datastoreandretrofitrecyclerview.R
 import com.example.datastoreandretrofitrecyclerview.adapter.UserAdapter
 import com.example.datastoreandretrofitrecyclerview.databinding.ActivitySavedNewsBinding
+import com.example.datastoreandretrofitrecyclerview.manager.DataStoreManager
 import com.example.datastoreandretrofitrecyclerview.manager.PreferenceManger
 import com.example.datastoreandretrofitrecyclerview.model.UserModelItem
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class SavedNewsActivity : AppCompatActivity() {
 
@@ -22,7 +28,7 @@ class SavedNewsActivity : AppCompatActivity() {
             }
         )
     }
-
+    private val dataStoreManager by lazy { DataStoreManager(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind = ActivitySavedNewsBinding.inflate(layoutInflater)
@@ -32,9 +38,14 @@ class SavedNewsActivity : AppCompatActivity() {
     }
 
     private fun getUserData() {
-        preferenceManger.getAllUserList().let {
-            userAdapter.onNewsListChanged(it)
+        lifecycleScope.launch {
+            dataStoreManager.userFlow.collect{
+                Log.e("saveistflow",it.toString())
+            }
         }
+            //Log.d("lst",list.toString())
+            //userAdapter.onNewsListChanged(list)
+
     }
 
     private fun setUpui() {

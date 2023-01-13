@@ -55,7 +55,7 @@ class UserAdapter(
 
     //updating recyclerview when data list changed
     @SuppressLint("NotifyDataSetChanged")
-    fun onNewsListChanged(postList:List<UserModelItem>?) {
+    fun onNewsListChanged(postList:List<UserModelItem>) {
         this.userList?.clear()
         postList?.let { this.userList?.addAll(it) }
         notifyDataSetChanged()
