@@ -7,17 +7,10 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.asLiveData
 import com.example.datastoreandretrofitrecyclerview.model.UserModelItem
-import com.example.datastoreandretrofitrecyclerview.ui.NewsActivity
-
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
+
 
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user_model")
