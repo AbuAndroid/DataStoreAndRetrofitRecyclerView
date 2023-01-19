@@ -1,6 +1,6 @@
 package com.example.datastoreandretrofitrecyclerview.network
 
-import com.example.datastoreandretrofitrecyclerview.Constants
+import com.example.datastoreandretrofitrecyclerview.warehouse.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

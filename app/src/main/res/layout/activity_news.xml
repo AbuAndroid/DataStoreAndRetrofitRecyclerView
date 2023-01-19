@@ -12,28 +12,12 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/uiSvSearchItems"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="14dp"
-            android:background="@drawable/searchviewbackground"
-            android:visibility="gone"
-            app:iconifiedByDefault="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:queryHint="Enter post Title :">
-        </androidx.appcompat.widget.SearchView>
-
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/uiEtSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="28dp"
             android:background="@drawable/searchviewbackground"
             android:drawableStart="@drawable/ic_baseline_search"
             android:hint="Search by title"
@@ -41,6 +25,7 @@
             android:padding="10dp"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
