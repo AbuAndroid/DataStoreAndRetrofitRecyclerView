@@ -40,14 +40,10 @@ class UserAdapter(
         } else {
             holder.uiBtToSaveItems.setImageResource(R.drawable.ic_baseline_bookmark_border)
         }
-        holder.uiBtToSaveItems.setOnClickListener {
-            onItemClick(itemsList)
-             notifyDataSetChanged()
-        }
     }
 
     override fun getItemCount(): Int {
-        return userList?.size ?:0
+        return userList?.size?:0
     }
 
 
@@ -66,5 +62,12 @@ class UserAdapter(
         val uiTvUserDescription = view.findViewById<TextView>(R.id.uiTvBody)!!
         val uiBtToSaveItems = view.findViewById<ImageView>(R.id.uiBtSaveitems)!!
         val uiCardItems = view.findViewById<CardView>(R.id.uiCardItems)!!
+
+        init {
+            uiBtToSaveItems.setOnClickListener {
+                onItemClick(userList?.get(adapterPosition))
+                notifyDataSetChanged()
+            }
+        }
     }
 }
